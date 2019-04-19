@@ -1,0 +1,27 @@
+{
+  "name": "script-style-starter",
+  "version": "1.0.0",
+  "description": "Package which contains multiple scripts and styles (SCSS) to start web project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MaxenceMottard/script-style-starter.git"
+  },
+  "author": "MaxenceMottard",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MaxenceMottard/script-style-starter/issues"
+  },
+  "homepage": "https://github.com/MaxenceMottard/script-style-starter#readme",
+  "keywords": [
+    "starter",
+    "scss",
+    "script",
+    "style",
+    "web",
+    "design"
+  ]
+}
