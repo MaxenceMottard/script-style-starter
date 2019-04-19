@@ -1,8 +1,13 @@
 {
   "name": "@maxencemottard/script-style-starter",
-  "version": "1.0.3",
+  "version": "1.0.6",
   "description": "Package which contains multiple scripts and styles (SCSS) to start web project",
-  "main": "index.js",
+  "scripts": {
+    "build:esm": "rollup --config build/esm.js",
+    "build:umd": "rollup --config build/umd.js",
+    "build": "npm run build:esm && npm run build:umd",
+    "push": "npm run build && npm publish"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MaxenceMottard/script-style-starter.git"
@@ -20,5 +25,17 @@
     "style",
     "web",
     "design"
-  ]
+  ],
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-jest": "^22.4.3",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-plugin-transform-object-assign": "^6.22.0",
+    "babel-preset-stage-2": "^6.24.1",
+    "babel-preset-env": "^1.6.1",
+    "rollup": "^0.62.0",
+    "rollup-plugin-babel": "^3.0.3",
+    "rollup-plugin-uglify": "^2.0.1"
+  },
+  "main": "dist/maxence-script-starter.js"
 }

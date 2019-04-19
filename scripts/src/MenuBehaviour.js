@@ -1,4 +1,4 @@
-import {ToggleState} from "./ToggleState";
+import ToggleState from "./ToggleState";
 
 class MenuBehaviour  extends ToggleState{
     constructor( elementSelector, btnSelector ) {
@@ -47,4 +47,4 @@ class MenuBehaviour  extends ToggleState{
     }
 }
 
-export {MenuBehaviour}
+export default MenuBehaviour

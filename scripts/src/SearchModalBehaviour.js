@@ -1,4 +1,4 @@
-import {ModalBehaviour} from "./ModalBehaviour";
+import ModalBehaviour from "./ModalBehaviour";
 
 class SearchModalBehaviour extends ModalBehaviour {
     constructor( elementSelector, openBtnSelector, closeBtnSelector ) {
@@ -12,4 +12,4 @@ class SearchModalBehaviour extends ModalBehaviour {
     }
 }
 
-export {SearchModalBehaviour}
+export default SearchModalBehaviour

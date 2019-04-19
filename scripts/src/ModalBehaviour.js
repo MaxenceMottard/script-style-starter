@@ -1,4 +1,4 @@
-import {MenuBehaviour} from "./MenuBehaviour";
+import MenuBehaviour from "./MenuBehaviour";
 
 class ModalBehaviour extends MenuBehaviour {
     constructor( elementSelector, openBtnSelector, closeBtnSelector ) {
@@ -9,4 +9,4 @@ class ModalBehaviour extends MenuBehaviour {
     }
 }
 
-export {ModalBehaviour}
+export default ModalBehaviour

@@ -5,7 +5,6 @@ class ToggleState {
 
 
         window.addEventListener('click', (e) => {
-            console.log()
             if ( this.isOpen ) {
                 this.close(e)
             }
@@ -49,4 +48,4 @@ class ToggleState {
     closeCb = (e) => {}
 }
 
-export {ToggleState}
+export default ToggleState
