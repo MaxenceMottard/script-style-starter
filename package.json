@@ -37,5 +37,5 @@
     "rollup-plugin-babel": "^3.0.3",
     "rollup-plugin-uglify": "^2.0.1"
   },
-  "main": "dist/maxence-script-starter.js"
+  "main": "dist/main.js"
 }
