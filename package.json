@@ -1,6 +1,6 @@
 {
   "name": "@maxencemottard/script-style-starter",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Package which contains multiple scripts and styles (SCSS) to start web project",
   "main": "index.js",
   "scripts": {
