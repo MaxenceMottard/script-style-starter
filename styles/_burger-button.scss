@@ -1,0 +1,62 @@
+@mixin burgerButton($color) {
+  position: relative;
+  height: 40px;
+  width: 40px;
+  border: none;
+  background: none;
+  color: rgba($white, 0);
+  font-size: 0px;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+
+  span,
+  &::after,
+  &::before {
+    height: 3px;
+    width: 30px;
+    background-color: $color;
+    content: '';
+    display: block;
+    position: absolute;
+    left: 50%;
+    transform-origin: 50% 50%;
+  }
+
+  &::before {
+    top: 0;
+    transform: translate(-50%, 8px);
+    transition: transform $transitionTime, top $transitionTime;
+  }
+
+  span {
+    top: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    transition: opacity $transitionTime;
+  }
+
+  &::after {
+    bottom: 0;
+    transform: translate(-50%, -8px);
+    transition: transform $transitionTime, bottom $transitionTime;
+  }
+
+}
+
+@mixin burgerButtonOpen--Cross {
+  &::before {
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+  span {
+    opacity: 0;
+  }
+
+  &::after {
+    bottom: 50%;
+    transform: translate(-50%, 50%) rotate(-45deg);
+  }
+}
