@@ -1,12 +1,12 @@
 {
-  "name": "@maxencemottard/script-style-starter",
+  "name": "@maxencemottard/web-assets",
   "version": "1.0.6",
   "description": "Package which contains multiple scripts and styles (SCSS) to start web project",
   "scripts": {
     "build:esm": "rollup --config build/esm.js",
     "build:umd": "rollup --config build/umd.js",
     "build": "npm run build:esm && npm run build:umd",
-    "push": "npm run build && npm publish"
+    "push": "npm run build && npm publish --access public"
   },
   "repository": {
     "type": "git",
