@@ -1,8 +1,8 @@
 import ToggleState from "./ToggleState";
 
 class MenuBehaviour  extends ToggleState{
-    constructor( elementSelector, btnSelector ) {
-        super( btnSelector )
+    constructor({ elementSelector, btnSelector }) {
+        super({ btnSelector })
 
         const element = document.querySelector(elementSelector)
         const elementName = this.selectorToString( elementSelector )

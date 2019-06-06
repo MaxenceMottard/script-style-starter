@@ -1,8 +1,8 @@
 class ToggleState {
-    constructor( btnSelector ) {
+    constructor({ btnSelector, accessibility = true }) {
         this.isOpen = false
         this.btns = document.querySelectorAll( btnSelector )
-
+        this.accessibility = accessibility
 
         window.addEventListener('click', (e) => {
             if ( this.isOpen ) {
@@ -20,28 +20,38 @@ class ToggleState {
             return
         }
 
-        button.addEventListener( 'click', this.handleClick)
+        button.addEventListener( 'click', (e) => {
+            this.handleClick(e, button)
+        })
     }
 
-    handleClick = (e) => {
+    handleClick = (e, button) => {
         e.stopPropagation()
         e.preventDefault()
 
         if ( this.isOpen ) {
-            this.close(e)
+            this.close(e, button)
         } else {
-            this.open(e)
+            this.open(e, button)
         }
     }
 
-    open(e){
+    open(e, button){
         this.openCb(e)
         this.isOpen = true
+
+        if (this.accessibility) {
+            button.setAttribute('aria-expended', true)
+        }
     }
 
-    close(e){
+    close(e, button){
         this.closeCb(e)
         this.isOpen = false
+
+        if (this.accessibility) {
+            button.removeAttribute('aria-expended')
+        }
     }
 
     openCb = (e) => {}
