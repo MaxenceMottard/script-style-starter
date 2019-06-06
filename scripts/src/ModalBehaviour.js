@@ -1,5 +1,7 @@
 import MenuBehaviour from "./MenuBehaviour";
 
+// @TODO: Add accessibility
+
 class ModalBehaviour extends MenuBehaviour {
     constructor({ elementSelector, openBtnSelector, closeBtnSelector }) {
         super({ elementSelector, openBtnSelector })

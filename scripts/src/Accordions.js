@@ -1,3 +1,5 @@
+// @TODO: Add accessibility
+
 export default class Accordion {
 
     constructor(accordion) {

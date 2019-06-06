@@ -1,5 +1,7 @@
 import ModalBehaviour from "./ModalBehaviour";
 
+// @TODO: Add accessibility
+
 class SearchModalBehaviour extends ModalBehaviour {
     constructor({ elementSelector, openBtnSelector, closeBtnSelector }) {
         super({ elementSelector, openBtnSelector, closeBtnSelector })
