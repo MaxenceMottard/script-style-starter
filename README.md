@@ -8,4 +8,17 @@
 $ npm install @maxencemottard/web-assets
 ```
 
-## Usage
+## 
+
+## Scripts
+
+_There are many scripts in this package,_
+
+### ToggleSate
+
+
+
+
+
+## Styles
+

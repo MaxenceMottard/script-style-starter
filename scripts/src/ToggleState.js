@@ -1,8 +1,11 @@
 class ToggleState {
-    constructor({ btnSelector, accessibility = true }) {
+    constructor({ btnSelector, accessibility = true, openCallback = null, closeCallback = null, accessibilityBreakpoint }) {
         this.isOpen = false
-        this.btns = document.querySelectorAll( btnSelector )
+        this.btns = Array.from(document.querySelectorAll( btnSelector ))
         this.accessibility = accessibility
+        this.openCallback = openCallback
+        this.closeCallback = closeCallback
+        this.accessibilityBreakpoint = accessibilityBreakpoint
 
         window.addEventListener('click', (e) => {
             if ( this.isOpen ) {
@@ -10,9 +13,12 @@ class ToggleState {
             }
         })
 
-        this.btns.forEach( (btn) => {
-            this.addEventOnButton(btn)
+        this.btns.forEach( button => {
+            this.addEventOnButton(button)
         })
+
+        window.addEventListener('resize', this.accessibilityToggle)
+        this.accessibilityToggle()
     }
 
     addEventOnButton( button ) {
@@ -21,41 +27,60 @@ class ToggleState {
         }
 
         button.addEventListener( 'click', (e) => {
-            this.handleClick(e, button)
+            this.handleClick(e)
         })
     }
 
-    handleClick = (e, button) => {
+    handleClick = (e) => {
         e.stopPropagation()
         e.preventDefault()
 
         if ( this.isOpen ) {
-            this.close(e, button)
+            this.close(e)
         } else {
-            this.open(e, button)
+            this.open(e)
         }
     }
 
-    open(e, button){
-        this.openCb(e)
+    open(e){
         this.isOpen = true
 
-        if (this.accessibility) {
-            button.setAttribute('aria-expended', true)
+        this.accessibilityToggle()
+
+        if (this.openCallback){
+            this.openCallback()
         }
     }
 
-    close(e, button){
-        this.closeCb(e)
+    close(e){
         this.isOpen = false
 
-        if (this.accessibility) {
-            button.removeAttribute('aria-expended')
+        this.accessibilityToggle()
+
+        if (this.closeCallback){
+            this.closeCallback()
         }
     }
 
-    openCb = (e) => {}
-    closeCb = (e) => {}
+    accessibilityToggle() {
+        if (!this.accessibility) {
+            return
+        }
+
+        if (window.innerWidth > this.accessibilityBreakpoint) {
+            this.btns.forEach( btn => {
+                btn.removeAttribute('aria-expanded')
+            })
+        }  else if (window.innerWidth < this.accessibility && this.isOpen) {
+            this.btns.forEach( btn => {
+                btn.setAttribute('aria-expanded', true)
+            })
+        } else {
+            this.btns.forEach( btn => {
+                btn.setAttribute('aria-expanded', false)
+            })
+        }
+    }
 }
 
 export default ToggleState
