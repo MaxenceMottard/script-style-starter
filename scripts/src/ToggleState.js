@@ -71,7 +71,7 @@ class ToggleState {
             this.btns.forEach( btn => {
                 btn.removeAttribute('aria-expanded')
             })
-        }  else if (window.innerWidth < this.accessibility && this.isOpen) {
+        }  else if (window.innerWidth < this.accessibilityBreakpoint && this.isOpen) {
             this.btns.forEach( btn => {
                 btn.setAttribute('aria-expanded', true)
             })
