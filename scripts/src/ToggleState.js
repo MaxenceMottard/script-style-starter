@@ -48,7 +48,7 @@ class ToggleState {
         this.accessibilityToggle()
 
         if (this.openCallback){
-            this.openCallback()
+            this.openCallback(e)
         }
     }
 
@@ -58,7 +58,7 @@ class ToggleState {
         this.accessibilityToggle()
 
         if (this.closeCallback){
-            this.closeCallback()
+            this.closeCallback(e)
         }
     }
 
