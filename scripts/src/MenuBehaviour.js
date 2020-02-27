@@ -4,16 +4,16 @@ class MenuBehaviour  extends ToggleState{
     constructor({ elementSelector, btnSelector, openCallback = null, closeCallback = null, accessibility = true, accessibilityBreakpoint = 10000 }) {
         super({ btnSelector, openCallback, closeCallback, accessibility, accessibilityBreakpoint })
 
-        const element = document.querySelector(elementSelector)
+        this.element = document.querySelector(elementSelector)
         const elementName = this.selectorToString( elementSelector )
 
-        this.selectables = element.querySelectorAll('a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]')
+        this.selectables = this.element.querySelectorAll('a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]')
         this.accessibilityIndexToggle()
 
-        this.bodyClassOpen = 'js-' + elementName + '--open'
-        this.bodyClassClose = 'js-' + elementName + '--close'
+        this.classOpen = 'activated'
+        this.classClosed = 'deactivated'
 
-        element.addEventListener('click', (e) => {
+        this.element.addEventListener('click', (e) => {
             e.stopPropagation()
         })
         document.addEventListener( 'keydown', this.escape )
@@ -34,15 +34,15 @@ class MenuBehaviour  extends ToggleState{
 
     open(e) {
         super.open(e)
-        document.body.classList.add( this.bodyClassOpen )
-        document.body.classList.remove( this.bodyClassClose )
+        this.element.classList.add( this.classOpen )
+        this.element.classList.remove( this.classClosed )
 
         this.accessibilityIndexToggle()
     }
     close(e) {
         super.close(e)
-        document.body.classList.remove( this.bodyClassOpen )
-        document.body.classList.add( this.bodyClassClose )
+        this.element.classList.remove( this.classOpen )
+        this.element.classList.add( this.classClosed )
 
         this.accessibilityIndexToggle()
     }

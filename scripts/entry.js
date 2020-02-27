@@ -5,7 +5,7 @@ import Accordion from './src/Accordions'
 
 export {
     MenuBehaviour,
-    ModalBehaviour,
-    SearchModalBehaviour,
-    Accordion
+    // ModalBehaviour,
+    // SearchModalBehaviour,
+    // Accordion
 }
