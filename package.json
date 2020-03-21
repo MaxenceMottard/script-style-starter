@@ -5,8 +5,11 @@
   "scripts": {
     "build:esm": "rollup --config build/esm.js",
     "build:umd": "rollup --config build/umd.js",
-    "build": "yarn build:esm && yarn build:umd",
-    "push": "yarn build && yarn publish --access public"
+    "build": "yarn build:esm && yarn build:umd && yarn doc:build",
+    "push": "yarn build && yarn publish --access public && yarn doc:push",
+    "doc:build": "vuepress build docs",
+    "doc:dev": "vuepress dev docs",
+    "doc:push": "cp ./docs/.vuepress/dist/index.html ./docs/.vuepress/dist/200.html && surge ./docs/.vuepress/dist/ http://webassets.maxencemottard.com"
   },
   "repository": {
     "type": "git",
@@ -17,7 +20,7 @@
   "bugs": {
     "url": "https://github.com/MaxenceMottard/script-style-starter/issues"
   },
-  "homepage": "https://github.com/MaxenceMottard/script-style-starter#readme",
+  "homepage": "http://webassets.maxencemottard.com",
   "keywords": [
     "starter",
     "scss",
@@ -35,7 +38,9 @@
     "babel-preset-stage-2": "^6.24.1",
     "rollup": "^0.62.0",
     "rollup-plugin-babel": "^3.0.3",
-    "rollup-plugin-uglify": "^2.0.1"
+    "rollup-plugin-uglify": "^2.0.1",
+    "surge": "^0.21.3",
+    "vuepress": "^1.4.0"
   },
   "main": "dist/main.js"
 }
