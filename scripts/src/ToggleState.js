@@ -6,6 +6,7 @@ class ToggleState {
         this.openCallback = openCallback
         this.closeCallback = closeCallback
         this.accessibilityBreakpoint = accessibilityBreakpoint
+        this.isActive = true
 
         window.addEventListener('click', (e) => {
             if ( this.isOpen ) {
@@ -62,12 +63,23 @@ class ToggleState {
         }
     }
 
+    disable() {
+        this.isActive = false;
+        this.close();
+        this.accessibilityToggle();
+    }
+
+    enable() {
+        this.isActive = true;
+        this.accessibilityToggle();
+    }
+
     accessibilityToggle() {
         if (!this.accessibility) {
             return
         }
 
-        if (window.innerWidth > this.accessibilityBreakpoint) {
+        if (window.innerWidth > this.accessibilityBreakpoint || !this.isActive) {
             this.btns.forEach( btn => {
                 btn.removeAttribute('aria-expanded')
             })

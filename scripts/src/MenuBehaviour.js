@@ -1,17 +1,17 @@
 import ToggleState from "./ToggleState";
 
 class MenuBehaviour  extends ToggleState{
-    constructor({ elementSelector, btnSelector, openCallback = null, closeCallback = null, accessibility = true, accessibilityBreakpoint = 10000 }) {
+    constructor({ elementSelector, btnSelector, openCallback = null, closeCallback = null, accessibility = true, accessibilityBreakpoint = 10000, openClass = 'active' }) {
         super({ btnSelector, openCallback, closeCallback, accessibility, accessibilityBreakpoint })
 
         this.element = document.querySelector(elementSelector)
-        const elementName = this.selectorToString( elementSelector )
+        // const elementName = this.selectorToString( elementSelector )
 
         this.selectables = this.element.querySelectorAll('a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]')
         this.accessibilityIndexToggle()
 
-        this.classOpen = 'activated'
-        this.classClosed = 'deactivated'
+        this.classOpen = openClass
+        // this.classClosed = 'deactivated'
 
         this.element.addEventListener('click', (e) => {
             e.stopPropagation()
@@ -35,24 +35,24 @@ class MenuBehaviour  extends ToggleState{
     open(e) {
         super.open(e)
         this.element.classList.add( this.classOpen )
-        this.element.classList.remove( this.classClosed )
+        // this.element.classList.remove( this.classClosed )
 
         this.accessibilityIndexToggle()
     }
     close(e) {
         super.close(e)
         this.element.classList.remove( this.classOpen )
-        this.element.classList.add( this.classClosed )
+        // this.element.classList.add( this.classClosed )
 
         this.accessibilityIndexToggle()
     }
 
-    selectorToString = ( selector ) => {
-        let string = selector.replace( '.', '' )
-        string = string.replace( '#', '' )
-
-        return string
-    }
+    // selectorToString = ( selector ) => {
+    //     let string = selector.replace( '.', '' )
+    //     string = string.replace( '#', '' )
+    //
+    //     return string
+    // }
 
     accessibilityIndexToggle = () => {
         if (!this.accessibility) {
