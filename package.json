@@ -1,6 +1,6 @@
 {
   "name": "@maxencemottard/web-assets",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "Package which contains multiple scripts and styles (SCSS) to start web project",
   "scripts": {
     "build:esm": "rollup --config build/esm.js",
